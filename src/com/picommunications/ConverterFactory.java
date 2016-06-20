@@ -1,6 +1,8 @@
 package com.picommunications;
 
 
+import java.util.ArrayList;
+
 public class ConverterFactory {
 
 /**
@@ -16,24 +18,24 @@ public class ConverterFactory {
 //  Class Variables
 //=============================================
 
-
+    ArrayList<Boolean> defaultOptions;
 
 //=============================================
 //  Instance Variables
 //=============================================
 
-
-
-//=============================================
-//  Constructors
-//=============================================
-
-
+    ArrayList<Converter> converterInstances;
 
 //=============================================
 //  Methods
 //=============================================
 
+    public Converter getConverter(int i){
+        return converterInstances.get(i);
+    }
 
+    public Converter getConverter(){
+        return new Converter();
+    }
 
 }

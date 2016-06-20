@@ -29,12 +29,16 @@ public class Converter {
 //  Constructors
 //=============================================
 
-public Converter(int id, File f, String ifp, String ofp, ArrayList<Boolean> opts){
+    public Converter(int id, File f, String ifp, String ofp, ArrayList<Boolean> opts){
     this.converterID = id;
     this.inputFile = f;
     this.inputFilePath = ifp;
     this.outputFilePath = ofp;
     this.options = (ArrayList<Boolean>)opts.clone();
+    }
+
+    public Converter(){
+        //to be populated
     }
 
 
