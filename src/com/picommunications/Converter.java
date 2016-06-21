@@ -3,6 +3,7 @@ package com.picommunications;
 
 import java.io.File;
 import java.util.ArrayList;
+import org.apache.poi.hssf.usermodel.*;
 
 public class Converter {
 
@@ -12,6 +13,14 @@ public class Converter {
  *
  *   @version 20, June, 2016
  *   @author simonrhillary
+ */
+
+
+/**
+ *  TODO
+ * 1 finish constructors
+ * 2  conversion method development
+ *
  */
 
 
@@ -30,15 +39,22 @@ public class Converter {
 //=============================================
 
     public Converter(int id, File f, String ifp, String ofp, ArrayList<Boolean> opts){
-    this.converterID = id;
+    this.converterID = System.identityHashCode(this);
     this.inputFile = f;
     this.inputFilePath = ifp;
     this.outputFilePath = ofp;
     this.options = (ArrayList<Boolean>)opts.clone();
     }
 
-    public Converter(){
+    public Converter(File f, String ofp, ArrayList<Boolean> opts){
         //to be populated
+        this.inputFile = f;
+        this.outputFilePath = ofp;
+        this.options = (ArrayList<Boolean>)opts.clone();
+    }
+
+    public Converter(){
+
     }
 
 
@@ -47,7 +63,7 @@ public class Converter {
 //=============================================
 
     public int getConverterID(){
-        return converterID;
+        return  0;//converterID;
     }
 
     public void setInputFilepath(String ifp){
@@ -83,6 +99,6 @@ public class Converter {
     }
 
     public void convert(){
-
+        System.out.println("[" + converterID + "]" + " Inside Convert Method");
     }
 }
