@@ -5,8 +5,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
-import org.apache.poi.hssf.usermodel.*;
-import org.apache.poi.xssf.*;
+
+import com.sun.xml.internal.messaging.saaj.soap.impl.ElementFactory;
+import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.w3c.dom.Document;
@@ -14,6 +15,11 @@ import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 public class Converter {
 
@@ -49,7 +55,7 @@ public class Converter {
 //=============================================
 
     public Converter(File f, String ifp, String ofp, ArrayList<Boolean> opts){
-    this.converterID = System.identityHashCode(this);
+    converterID = System.identityHashCode(this);
 
     this.inputFile = f;
     this.inputFilePath = ifp;
@@ -58,7 +64,7 @@ public class Converter {
     }
 
     public Converter(String ifp, String ofp, ArrayList<Boolean> opts){
-        this.converterID = System.identityHashCode(this);
+        converterID = System.identityHashCode(this);
 
         this.inputFilePath = ifp;
         this.outputFilePath = ofp;
@@ -67,7 +73,7 @@ public class Converter {
     }
 
     public Converter(File f, String ofp, ArrayList<Boolean> opts){
-        this.converterID = System.identityHashCode(this);
+        converterID = System.identityHashCode(this);
 
         this.inputFile = f;
         this.outputFilePath = ofp;
@@ -75,7 +81,7 @@ public class Converter {
     }
 
     public Converter(String ifp, String ofp){
-        this.converterID = System.identityHashCode(this);
+        converterID = System.identityHashCode(this);
 
         this.inputFilePath = ifp;
         this.outputFilePath = ofp;
@@ -85,7 +91,7 @@ public class Converter {
     }
 
     public Converter(File f){
-        this.converterID = System.identityHashCode(this);
+        converterID = System.identityHashCode(this);
 
         this.inputFile = f;
         // TODO: 21/06/2016
@@ -93,7 +99,7 @@ public class Converter {
     }
 
     public Converter(){
-        this.converterID = System.identityHashCode(this);
+        converterID = System.identityHashCode(this);
     }
 
 
@@ -118,20 +124,32 @@ public class Converter {
 
             //count number of programmes in dataset
             System.out.println("Number of Programmes to be Imported: " + spreadsheet.getLastRowNum());
-
-            //add top level elements corresponding to number of programmes
-            Element programmeElement = doc.createElement("programme");
-            for(int i = 0; i< spreadsheet.getLastRowNum() ; i++){
-                rootElement.appendChild(programmeElement);
-                System.out.println("Appended " + programmeElement.getTagName() + " " + (i + 1) + " to " + rootElement.getTagName());
-            }
-
-            //read header names to generate elements
             String[] headerNames = new String[spreadsheet.getRow(0).getLastCellNum()];
-            for( int i = 0; i < spreadsheet.getRow(0).getLastCellNum(); i++ ) {
-                headerNames[i] = spreadsheet.getRow(0).getCell(i).toString().toLowerCase();
-                System.out.println("Added " + headerNames[i].toString() + " to list");
+            for (int i = 0; i < spreadsheet.getRow(0).getLastCellNum(); i++){
+                headerNames[i] = spreadsheet.getRow(0).getCell(i).toString().toLowerCase(); // add element name to headerNames
             }
+            //add top level elements corresponding to number of programmes
+            for(int i = 0; i < spreadsheet.getLastRowNum(); i++){
+                Element programmeElement = doc.createElement("programme");
+                for (int j = 0; j < headerNames.length; j++) {
+                    Element newElement = doc.createElement(headerNames[j]);
+                    programmeElement.appendChild(newElement); //append node to programme
+                    System.out.println("Appended " + newElement.getTagName() + " " + newElement.getNodeValue() + " to " + newElement.getParentNode().getNodeName());
+                }
+                rootElement.appendChild(programmeElement);
+            }
+
+
+            //Output the XML document
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer transformer = tf.newTransformer();
+            //set output formatting
+            tf.setAttribute("indent-number" , 4);
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File(String.valueOf(System.out)));
+            transformer.transform(source, result);
 
 
 
