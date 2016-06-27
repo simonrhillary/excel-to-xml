@@ -6,8 +6,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import com.sun.xml.internal.messaging.saaj.soap.impl.ElementFactory;
-import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.w3c.dom.Document;
@@ -118,7 +116,7 @@ public class Converter {
             doc.appendChild(rootElement);
 
             //Obtain the input spreadsheet
-            InputStream input = new FileInputStream(new File("/Users/simonrhillary/Developer/workspace/ExcelToXML/src/RBTest1.xlsx"));
+            InputStream input = new FileInputStream(new File("RBTest2.xlsx"));
             XSSFWorkbook workbook = new XSSFWorkbook(input);
             XSSFSheet spreadsheet = workbook.getSheetAt(0);
 
@@ -133,12 +131,13 @@ public class Converter {
                 Element programmeElement = doc.createElement("programme");
                 for (int j = 0; j < headerNames.length; j++) {
                     Element newElement = doc.createElement(headerNames[j]);
+                    newElement.setTextContent(String.valueOf(spreadsheet.getRow(i+1).getCell(j)).toString());
+                    System.out.println("Row : " + i+1 + " Cell : " + j + " Value : " + String.valueOf(spreadsheet.getRow(i+1).getCell(j)).toString());
                     programmeElement.appendChild(newElement); //append node to programme
                     System.out.println("Appended " + newElement.getTagName() + " " + newElement.getNodeValue() + " to " + newElement.getParentNode().getNodeName());
                 }
                 rootElement.appendChild(programmeElement);
             }
-
 
             //Output the XML document
             TransformerFactory tf = TransformerFactory.newInstance();
