@@ -3,11 +3,29 @@ package com.picommunications;
 //IMPORTS
 
 
-public class Main {
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Main implements ActionListener {
+
+    ConverterFactory cf = new ConverterFactory();
 
     public static void main(String[] args) {
-    ConverterFactory cf = new ConverterFactory();
-        cf.getConverter().convert();
 
+
+        Menu gui = new Menu();
+
+
+
+
+
+
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        cf.getConverter().convert();
     }
 }
