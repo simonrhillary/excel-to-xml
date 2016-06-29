@@ -14,7 +14,7 @@ public class Main implements ActionListener {
     public static void main(String[] args) {
 
 
-        Menu gui = new Menu();
+        Menu gui = new Menu(new Main());
 
 
 

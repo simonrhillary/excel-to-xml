@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Menu extends JFrame{
+public class Menu extends JPanel{
 
     JFrame f = new JFrame("Excel to XML Converter");
     private JTextArea outputTextArea;
@@ -43,13 +43,15 @@ public class Menu extends JFrame{
 //  Constructors
 //=============================================
 
-    public Menu(){
+    public Menu(ActionListener listener){
 
 
         JFrame.setDefaultLookAndFeelDecorated(true);
         f.setSize(400, 400);
         f.setLayout(new GridLayout());
 
+
+        convertButton.addActionListener(listener);
         f.add(fileTree);
         f.add(convertButton);
         f.add(outputTextArea);
@@ -58,12 +60,7 @@ public class Menu extends JFrame{
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        convertButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
     }
 
     public void setData(Converter data) {
