@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a7e9a1bc-e839-4572-8c86-dcbf73575d4f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ExcelToXML.iml" afterPath="$PROJECT_DIR$/ExcelToXML.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/Converter.java" afterPath="$PROJECT_DIR$/src/com/picommunications/Converter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/ConverterFactory.java" afterPath="$PROJECT_DIR$/src/com/picommunications/ConverterFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/Main.java" afterPath="$PROJECT_DIR$/src/com/picommunications/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/Menu.form" afterPath="$PROJECT_DIR$/src/com/picommunications/Menu.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/Menu.java" afterPath="$PROJECT_DIR$/src/com/picommunications/Menu.java" />
     </list>
     <ignored path="ExcelToXML.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,10 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/picommunications/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-100">
+            <state relative-caret-position="1995">
               <caret line="133" column="80" selection-start-line="133" selection-start-column="80" selection-end-line="133" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -64,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Converter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Converter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/picommunications/Converter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
-              <caret line="204" column="27" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
+            <state relative-caret-position="633">
+              <caret line="264" column="43" selection-start-line="264" selection-start-column="43" selection-end-line="264" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6959#6960#0" expanded="true" />
@@ -120,8 +115,8 @@
         <option value="$PROJECT_DIR$/src/com/picommunications/Menu.java" />
         <option value="$PROJECT_DIR$/src/com/picommunications/Menu.form" />
         <option value="$PROJECT_DIR$/src/com/picommunications/ConverterFactory.java" />
-        <option value="$PROJECT_DIR$/src/com/picommunications/Converter.java" />
         <option value="$PROJECT_DIR$/src/com/picommunications/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/picommunications/Converter.java" />
       </list>
     </option>
   </component>
@@ -677,7 +672,14 @@
       <option name="project" value="LOCAL" />
       <updated>1467630412496</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Error Handling, Edge case handling, User prompts and messages&#10;">
+      <created>1467645951633</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1467645951634</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -740,7 +742,8 @@
     <MESSAGE value="ActionEvent Returned to main method. Conversion button works" />
     <MESSAGE value="UI redesign, add structure to code hierarchy, populate actionlistener method" />
     <MESSAGE value="add converted output to the output text area, convert button error catching&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="add converted output to the output text area, convert button error catching&#10;&#10;" />
+    <MESSAGE value="Error Handling, Edge case handling, User prompts and messages&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error Handling, Edge case handling, User prompts and messages&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1247,20 +1250,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/picommunications/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-100">
-          <caret line="133" column="80" selection-start-line="133" selection-start-column="80" selection-end-line="133" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/picommunications/Converter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="204" column="27" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
+        <state relative-caret-position="633">
+          <caret line="264" column="43" selection-start-line="264" selection-start-column="43" selection-end-line="264" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6959#6960#0" expanded="true" />
@@ -1270,6 +1263,16 @@
             <element signature="method#getFileAt#0;class#Converter#0" expanded="false" />
             <element signature="e#8123#8124#0" expanded="true" />
             <element signature="e#8157#8158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/picommunications/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1995">
+          <caret line="133" column="80" selection-start-line="133" selection-start-column="80" selection-end-line="133" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

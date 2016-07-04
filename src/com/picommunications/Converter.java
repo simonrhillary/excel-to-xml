@@ -262,7 +262,7 @@ public class Converter extends JFrame{
     void outputResult() throws TransformerException {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(outputFilePath + "/");
-        stringBuilder.append(FilenameUtils.removeExtension(inputFile.getName()));
+        stringBuilder.append(outputFileName);
         StreamResult result = new StreamResult((new File(stringBuilder.toString())));
         transformer.transform(source, result);
     }
