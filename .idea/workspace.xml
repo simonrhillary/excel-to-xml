@@ -4,8 +4,12 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7e9a1bc-e839-4572-8c86-dcbf73575d4f" name="Default" comment="Error Handling, Edge case handling, User prompts and messages&#10;">
+    <list default="true" id="a7e9a1bc-e839-4572-8c86-dcbf73575d4f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/Converter.java" afterPath="$PROJECT_DIR$/src/com/picommunications/Converter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/ConverterFactory.java" afterPath="$PROJECT_DIR$/src/com/picommunications/ConverterFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/Main.java" afterPath="$PROJECT_DIR$/src/com/picommunications/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/Menu.java" afterPath="$PROJECT_DIR$/src/com/picommunications/Menu.java" />
     </list>
     <ignored path="ExcelToXML.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/picommunications/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1995">
-              <caret line="133" column="80" selection-start-line="133" selection-start-column="80" selection-end-line="133" selection-end-column="80" />
+            <state relative-caret-position="1935">
+              <caret line="129" column="55" selection-start-line="129" selection-start-column="55" selection-end-line="129" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/picommunications/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1693">
-              <caret line="127" column="12" selection-start-line="127" selection-start-column="12" selection-end-line="127" selection-end-column="12" />
+            <state relative-caret-position="450">
+              <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,17 +65,17 @@
       <file leaf-file-name="Converter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/picommunications/Converter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="264" column="43" selection-start-line="264" selection-start-column="43" selection-end-line="264" selection-end-column="43" />
+            <state relative-caret-position="480">
+              <caret line="109" column="41" selection-start-line="109" selection-start-column="41" selection-end-line="109" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6959#6960#0" expanded="true" />
-                <element signature="e#6994#6995#0" expanded="true" />
-                <element signature="e#7195#7196#0" expanded="true" />
-                <element signature="e#7229#7230#0" expanded="true" />
+                <element signature="e#7026#7027#0" expanded="true" />
+                <element signature="e#7061#7062#0" expanded="true" />
+                <element signature="e#7262#7263#0" expanded="true" />
+                <element signature="e#7296#7297#0" expanded="true" />
                 <element signature="method#getFileAt#0;class#Converter#0" expanded="false" />
-                <element signature="e#8123#8124#0" expanded="true" />
-                <element signature="e#8157#8158#0" expanded="true" />
+                <element signature="e#8190#8191#0" expanded="true" />
+                <element signature="e#8224#8225#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,8 +84,8 @@
       <file leaf-file-name="ConverterFactory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/picommunications/ConverterFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,11 +115,11 @@
       <list>
         <option value="$PROJECT_DIR$/../../poi-3.14/poi-ooxml-3.14-20160307.jar!/org/apache/poi/POIXMLDocumentPart.class" />
         <option value="$PROJECT_DIR$/java.io.PrintStream@3dfc5fb8" />
-        <option value="$PROJECT_DIR$/src/com/picommunications/Menu.java" />
         <option value="$PROJECT_DIR$/src/com/picommunications/Menu.form" />
+        <option value="$PROJECT_DIR$/src/com/picommunications/Menu.java" />
         <option value="$PROJECT_DIR$/src/com/picommunications/ConverterFactory.java" />
-        <option value="$PROJECT_DIR$/src/com/picommunications/Main.java" />
         <option value="$PROJECT_DIR$/src/com/picommunications/Converter.java" />
+        <option value="$PROJECT_DIR$/src/com/picommunications/Main.java" />
       </list>
     </option>
   </component>
@@ -685,7 +689,14 @@
       <option name="project" value="LOCAL" />
       <updated>1467646364982</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Error Handling, Edge case handling, User prompts and messages&#10;">
+      <created>1467646393234</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1467646393234</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -756,30 +767,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/picommunications/Main.java</url>
-          <line>114</line>
+          <line>115</line>
           <properties />
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/picommunications/Main.java</url>
-          <line>73</line>
-          <properties />
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/picommunications/Main.java</url>
-          <line>90</line>
-          <properties />
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/picommunications/Converter.java</url>
-          <line>261</line>
-          <properties class="com.picommunications.Converter" method="outputResult" />
-          <option name="timeStamp" value="47" />
+          <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="52" />
+      <option name="time" value="53" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -838,13 +831,13 @@
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6959#6960#0" expanded="true" />
-            <element signature="e#6994#6995#0" expanded="true" />
-            <element signature="e#7195#7196#0" expanded="true" />
-            <element signature="e#7229#7230#0" expanded="true" />
+            <element signature="e#7026#7027#0" expanded="true" />
+            <element signature="e#7061#7062#0" expanded="true" />
+            <element signature="e#7262#7263#0" expanded="true" />
+            <element signature="e#7296#7297#0" expanded="true" />
             <element signature="method#getFileAt#0;class#Converter#0" expanded="false" />
-            <element signature="e#8123#8124#0" expanded="true" />
-            <element signature="e#8157#8158#0" expanded="true" />
+            <element signature="e#8190#8191#0" expanded="true" />
+            <element signature="e#8224#8225#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -903,13 +896,13 @@
           <caret line="128" column="126" selection-start-line="128" selection-start-column="126" selection-end-line="128" selection-end-column="126" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6959#6960#0" expanded="true" />
-            <element signature="e#6994#6995#0" expanded="true" />
-            <element signature="e#7195#7196#0" expanded="true" />
-            <element signature="e#7229#7230#0" expanded="true" />
+            <element signature="e#7026#7027#0" expanded="true" />
+            <element signature="e#7061#7062#0" expanded="true" />
+            <element signature="e#7262#7263#0" expanded="true" />
+            <element signature="e#7296#7297#0" expanded="true" />
             <element signature="method#getFileAt#0;class#Converter#0" expanded="false" />
-            <element signature="e#8123#8124#0" expanded="true" />
-            <element signature="e#8157#8158#0" expanded="true" />
+            <element signature="e#8190#8191#0" expanded="true" />
+            <element signature="e#8224#8225#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -940,13 +933,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6959#6960#0" expanded="true" />
-            <element signature="e#6994#6995#0" expanded="true" />
-            <element signature="e#7195#7196#0" expanded="true" />
-            <element signature="e#7229#7230#0" expanded="true" />
+            <element signature="e#7026#7027#0" expanded="true" />
+            <element signature="e#7061#7062#0" expanded="true" />
+            <element signature="e#7262#7263#0" expanded="true" />
+            <element signature="e#7296#7297#0" expanded="true" />
             <element signature="method#getFileAt#0;class#Converter#0" expanded="false" />
-            <element signature="e#8123#8124#0" expanded="true" />
-            <element signature="e#8157#8158#0" expanded="true" />
+            <element signature="e#8190#8191#0" expanded="true" />
+            <element signature="e#8224#8225#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -977,13 +970,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6959#6960#0" expanded="true" />
-            <element signature="e#6994#6995#0" expanded="true" />
-            <element signature="e#7195#7196#0" expanded="true" />
-            <element signature="e#7229#7230#0" expanded="true" />
+            <element signature="e#7026#7027#0" expanded="true" />
+            <element signature="e#7061#7062#0" expanded="true" />
+            <element signature="e#7262#7263#0" expanded="true" />
+            <element signature="e#7296#7297#0" expanded="true" />
             <element signature="method#getFileAt#0;class#Converter#0" expanded="false" />
-            <element signature="e#8123#8124#0" expanded="true" />
-            <element signature="e#8157#8158#0" expanded="true" />
+            <element signature="e#8190#8191#0" expanded="true" />
+            <element signature="e#8224#8225#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1014,13 +1007,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6959#6960#0" expanded="true" />
-            <element signature="e#6994#6995#0" expanded="true" />
-            <element signature="e#7195#7196#0" expanded="true" />
-            <element signature="e#7229#7230#0" expanded="true" />
+            <element signature="e#7026#7027#0" expanded="true" />
+            <element signature="e#7061#7062#0" expanded="true" />
+            <element signature="e#7262#7263#0" expanded="true" />
+            <element signature="e#7296#7297#0" expanded="true" />
             <element signature="method#getFileAt#0;class#Converter#0" expanded="false" />
-            <element signature="e#8123#8124#0" expanded="true" />
-            <element signature="e#8157#8158#0" expanded="true" />
+            <element signature="e#8190#8191#0" expanded="true" />
+            <element signature="e#8224#8225#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1051,13 +1044,13 @@
           <caret line="40" column="25" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6959#6960#0" expanded="true" />
-            <element signature="e#6994#6995#0" expanded="true" />
-            <element signature="e#7195#7196#0" expanded="true" />
-            <element signature="e#7229#7230#0" expanded="true" />
+            <element signature="e#7026#7027#0" expanded="true" />
+            <element signature="e#7061#7062#0" expanded="true" />
+            <element signature="e#7262#7263#0" expanded="true" />
+            <element signature="e#7296#7297#0" expanded="true" />
             <element signature="method#getFileAt#0;class#Converter#0" expanded="false" />
-            <element signature="e#8123#8124#0" expanded="true" />
-            <element signature="e#8157#8158#0" expanded="true" />
+            <element signature="e#8190#8191#0" expanded="true" />
+            <element signature="e#8224#8225#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1088,13 +1081,13 @@
           <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6959#6960#0" expanded="true" />
-            <element signature="e#6994#6995#0" expanded="true" />
-            <element signature="e#7195#7196#0" expanded="true" />
-            <element signature="e#7229#7230#0" expanded="true" />
+            <element signature="e#7026#7027#0" expanded="true" />
+            <element signature="e#7061#7062#0" expanded="true" />
+            <element signature="e#7262#7263#0" expanded="true" />
+            <element signature="e#7296#7297#0" expanded="true" />
             <element signature="method#getFileAt#0;class#Converter#0" expanded="false" />
-            <element signature="e#8123#8124#0" expanded="true" />
-            <element signature="e#8157#8158#0" expanded="true" />
+            <element signature="e#8190#8191#0" expanded="true" />
+            <element signature="e#8224#8225#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1225,6 +1218,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/picommunications/ConverterFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/picommunications/Menu.form">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1236,47 +1239,37 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/picommunications/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1693">
-          <caret line="127" column="12" selection-start-line="127" selection-start-column="12" selection-end-line="127" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/picommunications/ConverterFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/picommunications/Converter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="264" column="43" selection-start-line="264" selection-start-column="43" selection-end-line="264" selection-end-column="43" />
+        <state relative-caret-position="480">
+          <caret line="109" column="41" selection-start-line="109" selection-start-column="41" selection-end-line="109" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6959#6960#0" expanded="true" />
-            <element signature="e#6994#6995#0" expanded="true" />
-            <element signature="e#7195#7196#0" expanded="true" />
-            <element signature="e#7229#7230#0" expanded="true" />
+            <element signature="e#7026#7027#0" expanded="true" />
+            <element signature="e#7061#7062#0" expanded="true" />
+            <element signature="e#7262#7263#0" expanded="true" />
+            <element signature="e#7296#7297#0" expanded="true" />
             <element signature="method#getFileAt#0;class#Converter#0" expanded="false" />
-            <element signature="e#8123#8124#0" expanded="true" />
-            <element signature="e#8157#8158#0" expanded="true" />
+            <element signature="e#8190#8191#0" expanded="true" />
+            <element signature="e#8224#8225#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/picommunications/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1995">
-          <caret line="133" column="80" selection-start-line="133" selection-start-column="80" selection-end-line="133" selection-end-column="80" />
+        <state relative-caret-position="1935">
+          <caret line="129" column="55" selection-start-line="129" selection-start-column="55" selection-end-line="129" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/picommunications/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

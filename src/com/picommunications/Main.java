@@ -112,6 +112,7 @@ public class Main implements ActionListener {
 
 
         }else if(e.getSource() == gui.outputToDirectoryButton){
+            boolean output = true;
             if (!gui.inputTextField.getText().equals("")) {
                 if (!gui.outputTextField.getText().equals("")) {
                     if (getTickedOptions().length > 0) {
@@ -119,19 +120,24 @@ public class Main implements ActionListener {
                         File[] dirContents = dir.listFiles();
                         try{
                             for(int i = 0; i < dirContents.length; i++){
-                                if(dirContents[i].getName() == converter.outputFileName){
+                                if(dirContents[i].getName().equals(converter.outputFileName)){
                                     int res = JOptionPane.showConfirmDialog(gui, "A file by this name already exists in the specified folder." +
                                             " Would you like to Overwrite it?", "Warning", JOptionPane.WARNING_MESSAGE);
                                     if(res == JOptionPane.YES_OPTION){
                                         converter.outputResult();
                                         JOptionPane.showMessageDialog(gui, "The File has been written to the Output Directory",
                                                 "Success", JOptionPane.INFORMATION_MESSAGE);
+                                        output = false;
+                                    }else{
+                                        output = false;
                                     }
                                 }
                             }
-                            converter.outputResult();
-                            JOptionPane.showMessageDialog(gui, "The File has been written to the Output Directory",
-                                    "Success", JOptionPane.INFORMATION_MESSAGE);
+                            if (output) {
+                                converter.outputResult();
+                                JOptionPane.showMessageDialog(gui, "The File has been written to the Output Directory",
+                                        "Success", JOptionPane.INFORMATION_MESSAGE);
+                            }
 
                         } catch (TransformerException e1) {
                             JOptionPane.showMessageDialog(gui, "Transformer Exception!", "Error", JOptionPane.ERROR_MESSAGE);

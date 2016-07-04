@@ -44,18 +44,6 @@ public class Menu extends JPanel{
  */
 
 
-//=============================================
-//  Class Variables
-//=============================================
-
-//=============================================
-//  Instance Variables
-//=============================================
-
-//=============================================
-//  Constructors
-//=============================================
-
     public Menu(ActionListener listener){
 
         try {
@@ -136,8 +124,6 @@ public class Menu extends JPanel{
        // f.pack();
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-
 
     }
 

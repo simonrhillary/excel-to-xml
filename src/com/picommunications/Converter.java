@@ -3,15 +3,14 @@ package com.picommunications;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.POIXMLException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -36,15 +35,6 @@ public class Converter extends JFrame{
  *   @author simonrhillary
  */
 
-
-/**
- *  TODO
- * 1 finish constructors
- * 2 Debug Conversion Method
- * 3 User Interface creation
- */
-
-
 //=============================================
 //  Instance Variables
 //=============================================
@@ -56,6 +46,7 @@ public class Converter extends JFrame{
     public String[] headers;
     public List<String> options;
     public String outputFileName;
+    public String inputFileName;
     StreamResult streamResult;
     StringWriter writer;
     InputStream input;
@@ -82,7 +73,9 @@ public class Converter extends JFrame{
     this.inputFilePath = ifp;
     this.outputFilePath = ofp;
     this.options = new ArrayList<String>();
+        this.inputFileName = f.getName();
     this.outputFileName = FilenameUtils.removeExtension(f.getName()) + ".xml";
+
         setFile(f);
     }
 
@@ -94,6 +87,7 @@ public class Converter extends JFrame{
         this.inputFile = getFileAt(inputFilePath);
         setFile(ifp);
         this.outputFileName = FilenameUtils.removeExtension(this.inputFile.getName()) + ".xml";
+        this.inputFileName = this.inputFile.getName();
     }
 
     public Converter(File f, String ofp, String[] opts) throws IOException, InvalidFormatException{
@@ -101,6 +95,7 @@ public class Converter extends JFrame{
         this.inputFile = f;
         this.outputFilePath = ofp;
         this.options = new ArrayList<String>();
+        this.inputFileName = this.inputFile.getName();
         this.outputFileName = FilenameUtils.removeExtension(f.getName()) + ".xml";
         setOptions(opts);
         setFile(f);
@@ -112,6 +107,7 @@ public class Converter extends JFrame{
         this.outputFilePath = ofp;
         this.options = new ArrayList<String>();
         this.outputFileName = FilenameUtils.removeExtension(f.getName()) + ".xml";
+        this.inputFileName = f.getName();
         setFile(f);
     }
 
@@ -186,8 +182,6 @@ public class Converter extends JFrame{
         finalString = sb.toString();
         System.out.println("END OF CONVERT METHOD");
     }
-
-
 
     public int getConverterID(){
         return  converterID;
