@@ -1,10 +1,11 @@
 package com.picommunications;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -43,59 +44,101 @@ public class Converter extends JFrame{
 //  Instance Variables
 //=============================================
 
-    private static int converterID;
-    private File inputFile;
-    private String inputFilePath;
-    private String outputFilePath;
-    private ArrayList<Boolean> options;
+    public static int converterID;
+    public File inputFile;
+    public String inputFilePath;
+    public String outputFilePath;
     public String[] headers;
+    public List<String> options;
+    StreamResult streamResult;
+    StringWriter writer;
+    InputStream input;
+    XSSFWorkbook workbook;
+    XSSFSheet sheet;
+    String finalString;
 
 //=============================================
 //  Constructors
 //=============================================
 
-    public Converter(File f, String ifp, String ofp, ArrayList<Boolean> opts){
+    public Converter(File f, String ifp, String ofp){
     converterID = System.identityHashCode(this);
-
     this.inputFile = f;
     this.inputFilePath = ifp;
     this.outputFilePath = ofp;
-    this.options = (ArrayList<Boolean>)opts.clone();
-    }
-
-    public Converter(String ifp, String ofp, ArrayList<Boolean> opts){
-        converterID = System.identityHashCode(this);
-
-        this.inputFilePath = ifp;
-        this.outputFilePath = ofp;
-        this.options = (ArrayList<Boolean>)opts.clone();
-        this.inputFile = getFileAt(inputFilePath);
-    }
-
-    public Converter(File f, String ofp, ArrayList<Boolean> opts){
-        converterID = System.identityHashCode(this);
-
-        this.inputFile = f;
-        this.outputFilePath = ofp;
-        this.options = (ArrayList<Boolean>)opts.clone();
+    this.options = new ArrayList<String>();
+        try {
+            input = new FileInputStream(new File(f.getAbsolutePath()));
+            workbook = new XSSFWorkbook(input);
+            sheet = workbook.getSheetAt(0);
+            populateHeaders(sheet);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Converter(String ifp, String ofp){
         converterID = System.identityHashCode(this);
-
         this.inputFilePath = ifp;
         this.outputFilePath = ofp;
+        this.options = new ArrayList<String>();
         this.inputFile = getFileAt(inputFilePath);
-        //TODO
-        // default options
+        try {
+            input = new FileInputStream(new File(inputFile.getAbsolutePath()));
+            workbook = new XSSFWorkbook(input);
+            sheet = workbook.getSheetAt(0);
+            populateHeaders(sheet);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public Converter(File f, String ofp, String[] opts){
+        converterID = System.identityHashCode(this);
+        this.inputFile = f;
+        this.outputFilePath = ofp;
+        this.options = new ArrayList<String>();
+        setOptions(opts);
+        try {
+            input = new FileInputStream(new File(f.getAbsolutePath()));
+            workbook = new XSSFWorkbook(input);
+            sheet = workbook.getSheetAt(0);
+            populateHeaders(sheet);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Converter(File f, String ofp){
+        converterID = System.identityHashCode(this);
+        this.inputFile = f;
+        this.outputFilePath = ofp;
+        this.options = new ArrayList<String>();
+        try {
+            input = new FileInputStream(new File(f.getAbsolutePath()));
+            workbook = new XSSFWorkbook(input);
+            sheet = workbook.getSheetAt(0);
+            populateHeaders(sheet);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public Converter(File f){
         converterID = System.identityHashCode(this);
-
         this.inputFile = f;
-        // TODO: 21/06/2016
-        //default options
+        this.inputFilePath = f.getAbsolutePath();
+        this.outputFilePath = ConverterFactory.defaultOutputFilePath;
+        this.options = new ArrayList<String>();
+        try {
+            input = new FileInputStream(new File(f.getAbsolutePath()));
+            workbook = new XSSFWorkbook(input);
+            sheet = workbook.getSheetAt(0);
+            populateHeaders(sheet);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Converter(){
@@ -117,27 +160,25 @@ public class Converter extends JFrame{
             Element rootElement = doc.createElement("data-set");
             doc.appendChild(rootElement);
 
-            //Obtain the input spreadsheet
-            InputStream input = new FileInputStream(new File("RBTest2.xlsx"));
-            XSSFWorkbook workbook = new XSSFWorkbook(input);
-            XSSFSheet spreadsheet = workbook.getSheetAt(0);
-
             //count number of programmes in dataset
-            System.out.println("Number of Programmes to be Imported: " + spreadsheet.getLastRowNum());
-            String[] headerNames = new String[spreadsheet.getRow(0).getLastCellNum()];
-            for (int i = 0; i < spreadsheet.getRow(0).getLastCellNum(); i++){
-                headerNames[i] = spreadsheet.getRow(0).getCell(i).toString().toLowerCase(); // add element name to headerNames
+            System.out.println("Number of Programmes to be Imported: " + sheet.getLastRowNum());
+            String[] headerNames = new String[sheet.getRow(0).getLastCellNum()];
+            for (int i = 0; i < sheet.getRow(0).getLastCellNum(); i++){
+                headerNames[i] = sheet.getRow(0).getCell(i).toString().toLowerCase(); // add element name to headerNames
             }
 
             //add top level elements corresponding to number of programmes
-            for(int i = 0; i < spreadsheet.getLastRowNum(); i++){
+            for(int i = 0; i < sheet.getLastRowNum(); i++){
                 Element programmeElement = doc.createElement("programme");
-                for (int j = 0; j < headerNames.length; j++) {
-                    Element newElement = doc.createElement(headerNames[j]);
-                    newElement.setTextContent(String.valueOf(spreadsheet.getRow(i+1).getCell(j)).toString());
-                    System.out.println("Row : " + i+1 + " Cell : " + j + " Value : " + String.valueOf(spreadsheet.getRow(i+1).getCell(j)).toString());
-                    programmeElement.appendChild(newElement); //append node to programme
-                    System.out.println("Appended " + newElement.getTagName() + " " + newElement.getNodeValue() + " to " + newElement.getParentNode().getNodeName());
+                for (int j = 0; j < options.size(); j++) {
+                    if (1==1) { //if options contains the element header, add it to the document
+                        Element newElement = doc.createElement(options.get(j));
+                        newElement.setTextContent(String.valueOf(sheet.getRow(i+1).getCell(j)));
+                        System.out.println("Row : " + i+1 + " Cell : " + j + " Value : " + String.valueOf(sheet.getRow(i+1).getCell(j)));
+                        programmeElement.appendChild(newElement); //append node to programme
+                        System.out.println("Appended " + newElement.getTagName() + " "
+                                + newElement.getNodeValue() + " to " + newElement.getParentNode().getNodeName());
+                    }
                 }
                 rootElement.appendChild(programmeElement);
             }
@@ -150,8 +191,15 @@ public class Converter extends JFrame{
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(String.valueOf(System.out)));// change this to output directory
-            transformer.transform(source, result);
+            streamResult = new StreamResult(new File(String.valueOf(System.out)));// change this to output directory
+            transformer.transform(source, streamResult);
+
+            //create a StringWriter for the output
+            writer = new StringWriter();
+            StreamResult result = new StreamResult( writer );
+            transformer.transform( source, result );
+            StringBuffer sb = writer.getBuffer();
+            finalString = sb.toString();
 
             //output result to directory
 
@@ -159,6 +207,7 @@ public class Converter extends JFrame{
         }catch(Exception e){
             e.printStackTrace();
         }
+        System.out.println("END OF CONVERT METHOD");
     }
 
 
@@ -190,16 +239,31 @@ public class Converter extends JFrame{
         return outputFilePath;
     }
 
-    public void setOptions(ArrayList<Boolean> o){
-        this.options = o;
-    }
 
-    public ArrayList<Boolean> getOptions(){
+    public List<String> getOptions(){
         return options;
     }
 
     public File getFileAt(String path){
         File f = new File(path);
         return f;
+    }
+
+    public void populateHeaders(XSSFSheet sheet){
+        headers = new String[sheet.getRow(0).getLastCellNum()];
+        for (int i = 0; i < sheet.getRow(0).getLastCellNum(); i++){
+            headers[i] = sheet.getRow(0).getCell(i).toString().toLowerCase(); // add element name to headerNames
+        }
+
+    }
+
+    public void setOptions(String[] s){
+        for(int i = 0; i < s.length; i++){
+            options.add(s[i]);
+        }
+    }
+
+    public String getFinalOutput(){
+        return finalString;
     }
 }
