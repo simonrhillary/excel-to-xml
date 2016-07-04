@@ -31,6 +31,7 @@ public class Menu extends JPanel{
     private JPanel convertPanel;
     public JTextField inputTextField;
     public JTextField outputTextField;
+    public JButton outputToDirectoryButton;
     private JScrollPane scroll;
 
 
@@ -95,6 +96,7 @@ public class Menu extends JPanel{
         checkboxList.add(checkBox5);
         checkboxList.add(checkBox6);
         checkboxList.add(checkBox7);
+        checkboxList.add(checkBox8);
         checkBox1.setMnemonic(0);
         checkBox2.setMnemonic(1);
         checkBox3.setMnemonic(2);
@@ -123,6 +125,7 @@ public class Menu extends JPanel{
         outputPanel.add(scroll);
         f.add(outputPanel);
 
+        outputToDirectoryButton.addActionListener(listener);
         convertButton.addActionListener(listener);
         convertPanel.setOpaque(true);
         convertPanel.setBackground(Color.WHITE);

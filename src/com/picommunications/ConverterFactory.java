@@ -1,7 +1,11 @@
 package com.picommunications;
 
 
+import org.apache.poi.POIXMLException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ConverterFactory {
@@ -47,20 +51,20 @@ public class ConverterFactory {
         return new Converter();
     }
 
-    public Converter getConverter(File f){
+    public Converter getConverter(File f) throws IOException, InvalidFormatException, POIXMLException {
         Converter c = new Converter(f);
         c.setOutputDirectory(defaultOutputFilePath);
         converterInstances.add(c);
         return c;
     }
 
-    public Converter getConverter(File f, String outputFilePath){
+    public Converter getConverter(File f, String outputFilePath) throws IOException, InvalidFormatException, POIXMLException{
         Converter c = new Converter(f, outputFilePath);
         converterInstances.add(c);
         return c;
     }
 
-    public Converter getConverter(File f, String outputFilePath, String[] options){
+    public Converter getConverter(File f, String outputFilePath, String[] options) throws IOException, InvalidFormatException, POIXMLException{
         Converter c = new Converter(f, outputFilePath, options);
         converterInstances.add(c);
         return c;
