@@ -9,16 +9,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7e9a1bc-e839-4572-8c86-dcbf73575d4f" name="Default" comment="User Interface changes, further error handling and edge case handling.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/ExcelToXML_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/picommunications/ConverterTest.java" />
+    <list default="true" id="a7e9a1bc-e839-4572-8c86-dcbf73575d4f" name="Default" comment="Build Executable .JAR file">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ExcelToXML.iml" afterPath="$PROJECT_DIR$/ExcelToXML.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/Converter.java" afterPath="$PROJECT_DIR$/src/com/picommunications/Converter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/ConverterFactory.java" afterPath="$PROJECT_DIR$/src/com/picommunications/ConverterFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/Main.java" afterPath="$PROJECT_DIR$/src/com/picommunications/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/picommunications/Menu.java" afterPath="$PROJECT_DIR$/src/com/picommunications/Menu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
     </list>
     <ignored path="ExcelToXML.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -699,7 +692,14 @@
       <option name="project" value="LOCAL" />
       <updated>1467720093321</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Build Executable .JAR file">
+      <created>1467730097330</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1467730097331</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -767,7 +767,8 @@
     <MESSAGE value="Error Handling, Edge case handling, User prompts and messages&#10;" />
     <MESSAGE value="Fixed issue with converter outputting file regardless of choice" />
     <MESSAGE value="User Interface changes, further error handling and edge case handling." />
-    <option name="LAST_COMMIT_MESSAGE" value="User Interface changes, further error handling and edge case handling." />
+    <MESSAGE value="Build Executable .JAR file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Build Executable .JAR file" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
