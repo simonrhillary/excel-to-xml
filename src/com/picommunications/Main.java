@@ -21,7 +21,7 @@ public class Main implements ActionListener {
     ConverterFactory cf = new ConverterFactory();
     static Menu gui = new Menu(new Main());
     static final JFileChooser fc = new JFileChooser();
-    static FileNameExtensionFilter filter = new FileNameExtensionFilter("Microsoft .xlsx Files", "xlsx");
+    static FileNameExtensionFilter filter = new FileNameExtensionFilter("Microsoft .xlsx Files", "xlsx", "xls");
     Converter converter;
 
     public static void main(String[] args) {
@@ -32,7 +32,8 @@ public class Main implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == gui.convertButton) { //if convert button clicked
+        //if convert button clicked
+        if (e.getSource() == gui.convertButton) {
             try {
                 if(!gui.inputTextField.getText().equals("")){
                     if (!gui.outputTextField.getText().equals("")) {
@@ -69,9 +70,8 @@ public class Main implements ActionListener {
                 JOptionPane.showMessageDialog(gui, "Invalid Format Exception!", "Error", JOptionPane.ERROR_MESSAGE);
                 ife.printStackTrace();
             }
-
-
-        } else if(e.getSource() == gui.inputButton){  // if input button clicked
+            // if input button clicked
+        } else if(e.getSource() == gui.inputButton){
             fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
             int returnVal = fc.showOpenDialog(null);
             if(returnVal == JFileChooser.APPROVE_OPTION){
@@ -99,9 +99,8 @@ public class Main implements ActionListener {
                     gui.inputTextField.setText(file.getAbsolutePath()); //set the file input and output paths
                 }
             }
-
-
-        }else if(e.getSource() == gui.outputButton){  //if output button clicked
+            //if output button clicked
+        }else if(e.getSource() == gui.outputButton){
             fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);  //set filechooser to only accept directories
             int returnVal = fc.showOpenDialog(null);
             if(returnVal == JFileChooser.APPROVE_OPTION){
@@ -110,7 +109,7 @@ public class Main implements ActionListener {
             }
             fc.setFileSelectionMode(JFileChooser.FILES_ONLY); //reset filechooser to accept excel
 
-
+        // if outputToDirectory button clicked
         }else if(e.getSource() == gui.outputToDirectoryButton){
             boolean output = true;
             if (!gui.inputTextField.getText().equals("")) {

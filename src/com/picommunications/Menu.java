@@ -61,19 +61,19 @@ public class Menu extends JPanel{
         f.setSize(500, 500);
         f.setResizable(true);
         f.setContentPane(rootPanel);
+        f.setLocationRelativeTo(null);
+        f.getContentPane().setLayout(new BoxLayout(f.getContentPane(), BoxLayout.Y_AXIS));
+        f.setSize(700, 500);
+        f.setBackground(Color.LIGHT_GRAY);
 
-        f.setLayout(new GridLayout(2, 2));
-        f.setSize(850, 300);
-
-        inputPanel.setLayout(new GridLayout(2, 1));
-        inputPanel.setOpaque(true);
+        inputPanel.setLayout(new GridLayout(2, 2));
+        inputPanel.setOpaque(false);
         inputPanel.setBackground(Color.WHITE);
         inputPanel.setBorder(BorderFactory.createTitledBorder("Input Options"));
         inputButton.addActionListener(listener);
         outputButton.addActionListener(listener);
         inputPanel.add(inputButton);
         inputPanel.add(outputButton);
-
         f.add(inputPanel);
 
         checkboxList = new ArrayList<>();
@@ -85,15 +85,8 @@ public class Menu extends JPanel{
         checkboxList.add(checkBox6);
         checkboxList.add(checkBox7);
         checkboxList.add(checkBox8);
-        checkBox1.setMnemonic(0);
-        checkBox2.setMnemonic(1);
-        checkBox3.setMnemonic(2);
-        checkBox4.setMnemonic(3);
-        checkBox5.setMnemonic(4);
-        checkBox6.setMnemonic(5);
-        checkBox7.setMnemonic(6);
         optionPanel.setLayout(new GridLayout(5, 5));
-        optionPanel.setOpaque(true);
+        optionPanel.setOpaque(false);
         optionPanel.setBackground(Color.WHITE);
         optionPanel.setBorder(BorderFactory.createTitledBorder("Conversion Options"));
         optionPanel.add(checkBox1);
@@ -105,23 +98,24 @@ public class Menu extends JPanel{
         optionPanel.add(checkBox7);
         f.add(optionPanel);
 
+        outputToDirectoryButton.addActionListener(listener);
+        convertButton.addActionListener(listener);
+        convertPanel.setOpaque(false);
+        convertPanel.setBackground(Color.WHITE);
+        convertPanel.setBorder(BorderFactory.createTitledBorder("Convert"));
+        f.add(convertPanel);
+
         scroll = new JScrollPane(outputTextArea);
         outputPanel.setLayout(new GridLayout(1, 1));
-        outputPanel.setOpaque(true);
+        outputPanel.setPreferredSize(new Dimension(f.getWidth(), 300));
+        outputPanel.setOpaque(false);
         outputPanel.setBackground(Color.WHITE);
         outputPanel.setBorder(BorderFactory.createTitledBorder("Output"));
         outputPanel.add(scroll);
         f.add(outputPanel);
 
-        outputToDirectoryButton.addActionListener(listener);
-        convertButton.addActionListener(listener);
-        convertPanel.setOpaque(true);
-        convertPanel.setBackground(Color.WHITE);
-        convertPanel.setBorder(BorderFactory.createTitledBorder("Convert"));
 
-        f.add(convertPanel);
-
-       // f.pack();
+        f.pack();
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 

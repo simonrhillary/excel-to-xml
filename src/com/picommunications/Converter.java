@@ -1,16 +1,11 @@
 package com.picommunications;
 
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.POIXMLException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -24,6 +19,12 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Converter extends JFrame{
 
@@ -50,8 +51,8 @@ public class Converter extends JFrame{
     StreamResult streamResult;
     StringWriter writer;
     InputStream input;
-    XSSFWorkbook workbook;
-    XSSFSheet sheet;
+    Workbook workbook;
+    Sheet sheet;
     String finalString;
     DocumentBuilderFactory factory;
     DocumentBuilder builder = null;
@@ -131,7 +132,7 @@ public class Converter extends JFrame{
 //  Methods
 //=============================================
 
-    public void convert() throws IOException, ParserConfigurationException, IOException, TransformerException {
+    public void convert() throws ParserConfigurationException, IOException, TransformerException {
         System.out.println("[" + converterID + "]" + " Inside Convert Method");
         //Create new XML Document
         factory = DocumentBuilderFactory.newInstance();
@@ -139,30 +140,41 @@ public class Converter extends JFrame{
         doc = builder.newDocument();
         Element rootElement = doc.createElement("data-set");
         doc.appendChild(rootElement);
-
         //count number of programmes in dataset
         System.out.println("Number of Programmes to be Imported: " + sheet.getLastRowNum());
-        String[] headerNames = new String[sheet.getRow(0).getLastCellNum()];
-        for (int i = 0; i < sheet.getRow(0).getLastCellNum(); i++) {
-            headerNames[i] = sheet.getRow(0).getCell(i).toString().toLowerCase(); // add element name to headerNames
-        }
-
+        populateHeaders(sheet);
         //add top level elements corresponding to number of programmes
-        for (int i = 0; i < sheet.getLastRowNum(); i++) {
+        int count = (sheet.getLastRowNum());
+        boolean add = false;
+        for (int i = 0; i <= count; i++) {
             Element programmeElement = doc.createElement("programme");
-            for (int j = 0; j < options.size(); j++) {
-                if (1 == 1) { //if options contains the element header, add it to the document
-                    Element newElement = doc.createElement(options.get(j));
-                    newElement.setTextContent(String.valueOf(sheet.getRow(i + 1).getCell(j)));
-                    System.out.println("Row : " + i + 1 + " Cell : " + j + " Value : " + String.valueOf(sheet.getRow(i + 1).getCell(j)));
-                    programmeElement.appendChild(newElement); //append node to programme
+            if(!isRowEmpty(sheet.getRow(i)) && !rowContainsHeaders(sheet.getRow(i))){
+                for (int j = 0; j < options.size(); j++) {
+                    String tagName = options.get(j).replaceAll("\\s+", "");
+                    String s;
+                    Element newElement = doc.createElement(tagName);
+                    s = new DataFormatter().formatCellValue(sheet.getRow(i).getCell(j));
+                    if(tagName.equals("date")){
+                        try{
+                        Date date = new SimpleDateFormat("MM/dd/yy").parse(s);
+                        s = new SimpleDateFormat("dd/MM/yy").format(date);
+                    }catch(ParseException pe){
+                            System.out.println("Date could not be parsed!");
+                            pe.printStackTrace();
+                        }
+                    }
+                    newElement.setTextContent(s);
+                    System.out.println("Row : " + (i) + " Cell : " + j + " Value : " + (s));
+                    programmeElement.appendChild(newElement);
                     System.out.println("Appended " + newElement.getTagName() + " "
                             + newElement.getNodeValue() + " to " + newElement.getParentNode().getNodeName());
                 }
+                add = true;
             }
-            rootElement.appendChild(programmeElement);
+            if(add) {
+                rootElement.appendChild(programmeElement);
+            }
         }
-
         //Output the XML document
         tf = TransformerFactory.newInstance();
         transformer = tf.newTransformer();
@@ -171,13 +183,10 @@ public class Converter extends JFrame{
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
         source = new DOMSource(doc);
-        streamResult = new StreamResult(new File(String.valueOf(System.out)));// change this to output directory
-        transformer.transform(source, streamResult);
-
         //create a StringWriter for the output
         writer = new StringWriter();
-        StreamResult res = new StreamResult(writer);
-        transformer.transform(source, res);
+        streamResult  = new StreamResult(writer);
+        transformer.transform(source, streamResult);
         StringBuffer sb = writer.getBuffer();
         finalString = sb.toString();
         System.out.println("END OF CONVERT METHOD");
@@ -221,10 +230,14 @@ public class Converter extends JFrame{
         return f;
     }
 
-    public void populateHeaders(XSSFSheet sheet){
-        headers = new String[sheet.getRow(0).getLastCellNum()];
-        for (int i = 0; i < sheet.getRow(0).getLastCellNum(); i++){
-            headers[i] = sheet.getRow(0).getCell(i).toString().toLowerCase(); // add element name to headerNames
+    public void populateHeaders(Sheet sheet){
+        int firstRow = 0;
+        while(isRowEmpty(sheet.getRow(firstRow))){
+            firstRow++;
+        }
+        headers = new String[sheet.getRow(firstRow).getLastCellNum()];
+        for (int i = 0; i < sheet.getRow(firstRow).getLastCellNum(); i++){
+            headers[i] = sheet.getRow(firstRow).getCell(i).toString().toLowerCase(); // add element name to headerNames
         }
 
     }
@@ -239,7 +252,7 @@ public class Converter extends JFrame{
         return finalString;
     }
 
-    public void setFile(File f) throws FileNotFoundException, IOException, InvalidFormatException, POIXMLException {
+    public void setFile(File f) throws IOException, InvalidFormatException, POIXMLException {
         input = new FileInputStream(new File(f.getAbsolutePath()));
         workbook = new XSSFWorkbook(input);
         sheet = workbook.getSheetAt(0);
@@ -248,7 +261,7 @@ public class Converter extends JFrame{
 
     public void setFile(String filepath) throws IOException, InvalidFormatException, POIXMLException{
         input = new FileInputStream(new File(filepath));
-        workbook = new XSSFWorkbook(input);
+        workbook = WorkbookFactory.create(input);
         sheet = workbook.getSheetAt(0);
         populateHeaders(sheet);
     }
@@ -259,5 +272,37 @@ public class Converter extends JFrame{
         stringBuilder.append(outputFileName);
         StreamResult result = new StreamResult((new File(stringBuilder.toString())));
         transformer.transform(source, result);
+    }
+
+    public static boolean isRowEmpty(Row row){
+        for (int c = row.getFirstCellNum(); c < row.getLastCellNum(); c++) {
+            Cell cell = row.getCell(c);
+            if (cell != null && cell.getCellType() != Cell.CELL_TYPE_BLANK)
+                return false;
+        }
+        return true;
+    }
+
+    public int getEmptyRows(Sheet sheet){
+        int res = 0;
+        int c = sheet.getLastRowNum();
+        for(int i = 0; i < c; i++){
+            if(isRowEmpty(sheet.getRow(i))){
+                res++;
+            }
+        }
+        return res;
+    }
+
+    public boolean rowContainsHeaders(Row row){
+        int c = row.getLastCellNum();
+        for(int i = 0; i<c; i++){
+            for(int j = 0; j<headers.length; j++){
+                if(row.getCell(i).toString().equalsIgnoreCase(headers[j])) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
