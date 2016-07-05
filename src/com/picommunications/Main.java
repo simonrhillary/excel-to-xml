@@ -17,17 +17,15 @@ import java.util.ArrayList;
 
 public class Main implements ActionListener {
 
-    boolean validFile;
-    ConverterFactory cf = new ConverterFactory();
-    static Menu gui = new Menu(new Main());
-    static final JFileChooser fc = new JFileChooser();
-    static FileNameExtensionFilter filter = new FileNameExtensionFilter("Microsoft .xlsx Files", "xlsx", "xls");
-    Converter converter;
+    private ConverterFactory cf = new ConverterFactory();
+    private static Menu gui = new Menu(new Main());
+    private static final JFileChooser fc = new JFileChooser();
+    private static FileNameExtensionFilter filter = new FileNameExtensionFilter("Microsoft .xlsx Files", "xlsx", "xls");
+    private Converter converter;
 
     public static void main(String[] args) {
         fc.setFileFilter(filter);
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        File f;
     }
 
     @Override
@@ -76,6 +74,7 @@ public class Main implements ActionListener {
             int returnVal = fc.showOpenDialog(null);
             if(returnVal == JFileChooser.APPROVE_OPTION){
                 File file = fc.getSelectedFile();
+                boolean validFile;
                 try {
                     validFile = true;
                     converter =  cf.getConverter(file);
@@ -118,17 +117,19 @@ public class Main implements ActionListener {
                         File dir = new File(converter.getOutputDirectory());
                         File[] dirContents = dir.listFiles();
                         try{
-                            for(int i = 0; i < dirContents.length; i++){
-                                if(dirContents[i].getName().equals(converter.outputFileName)){
-                                    int res = JOptionPane.showConfirmDialog(gui, "A file by this name already exists in the specified folder." +
-                                            " Would you like to Overwrite it?", "Warning", JOptionPane.WARNING_MESSAGE);
-                                    if(res == JOptionPane.YES_OPTION){
-                                        converter.outputResult();
-                                        JOptionPane.showMessageDialog(gui, "The File has been written to the Output Directory",
-                                                "Success", JOptionPane.INFORMATION_MESSAGE);
-                                        output = false;
-                                    }else{
-                                        output = false;
+                            if (dir.list().length > 0) {
+                                for (File dirContent : dirContents) {
+                                    if (dirContent.getName().equals(converter.outputFileName)) {
+                                        int res = JOptionPane.showConfirmDialog(gui, "A file by this name already exists in the specified folder." +
+                                                " Would you like to Overwrite it?", "Warning", JOptionPane.YES_NO_OPTION);
+                                        if (res == JOptionPane.YES_OPTION) {
+                                            converter.outputResult();
+                                            JOptionPane.showMessageDialog(gui, "The File has been written to the Output Directory",
+                                                    "Success", JOptionPane.INFORMATION_MESSAGE);
+                                            output = false;
+                                        } else {
+                                            output = false;
+                                        }
                                     }
                                 }
                             }
@@ -157,7 +158,7 @@ public class Main implements ActionListener {
         }
     }
 
-    public void setDefaultOptions(String[] s){
+    private void setDefaultOptions(String[] s){
         for(int i = 0; i< s.length; i++){
             if(gui.checkboxList.get(i)!= null) {
                 gui.checkboxList.get(i).setText(s[i]);
@@ -174,8 +175,8 @@ public class Main implements ActionListener {
         }
     }
 
-    public String[] getTickedOptions(){
-        ArrayList<String> al = new ArrayList();
+    private String[] getTickedOptions(){
+        ArrayList<String> al = new ArrayList<>();
         for(int i = 0; i < gui.checkboxList.size(); i++){
             if(gui.checkboxList.get(i).isSelected()){
                 al.add(gui.checkboxList.get(i).getText());

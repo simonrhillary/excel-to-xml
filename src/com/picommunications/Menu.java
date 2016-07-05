@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class Menu extends JPanel{
 
-    JFrame f = new JFrame("Excel to XML Converter");
     public JTextArea outputTextArea;
     public JCheckBox checkBox1;
     public JCheckBox checkBox2;
@@ -19,7 +18,7 @@ public class Menu extends JPanel{
     public JCheckBox checkBox6;
     public JCheckBox checkBox7;
     public JCheckBox checkBox8;
-    public ArrayList<JCheckBox> checkboxList;
+    ArrayList<JCheckBox> checkboxList;
 
     private JPanel rootPanel;
     public JButton inputButton;
@@ -32,7 +31,6 @@ public class Menu extends JPanel{
     public JTextField inputTextField;
     public JTextField outputTextField;
     public JButton outputToDirectoryButton;
-    private JScrollPane scroll;
 
 
     /**
@@ -44,7 +42,7 @@ public class Menu extends JPanel{
  */
 
 
-    public Menu(ActionListener listener){
+    Menu(ActionListener listener){
 
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -58,6 +56,7 @@ public class Menu extends JPanel{
             e.printStackTrace();
         }
         JFrame.setDefaultLookAndFeelDecorated(true);
+        JFrame f = new JFrame("Excel to XML Converter");
         f.setSize(500, 500);
         f.setResizable(true);
         f.setContentPane(rootPanel);
@@ -105,7 +104,7 @@ public class Menu extends JPanel{
         convertPanel.setBorder(BorderFactory.createTitledBorder("Convert"));
         f.add(convertPanel);
 
-        scroll = new JScrollPane(outputTextArea);
+        JScrollPane scroll = new JScrollPane(outputTextArea);
         outputPanel.setLayout(new GridLayout(1, 1));
         outputPanel.setPreferredSize(new Dimension(f.getWidth(), 300));
         outputPanel.setOpaque(false);
@@ -119,16 +118,6 @@ public class Menu extends JPanel{
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-    }
-
-    public void setData(Converter data) {
-    }
-
-    public void getData(Converter data) {
-    }
-
-    public boolean isModified(Converter data) {
-        return false;
     }
 
 //=============================================
